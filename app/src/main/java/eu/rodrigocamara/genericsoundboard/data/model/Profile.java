@@ -4,14 +4,14 @@ package eu.rodrigocamara.genericsoundboard.data.model;
  * Created by Rodrigo Câmara on 30/01/2018.
  */
 
-public class SoundProfile {
+public class Profile {
     int id;
     String name;
     String imgURL;
     int numberOfSounds;
 
 
-    public SoundProfile(int id, String name, String imgURL, int numberOfSounds) {
+    public Profile(int id, String name, String imgURL, int numberOfSounds) {
         this.id = id;
         this.name = name;
         this.imgURL = imgURL;

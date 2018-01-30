@@ -7,7 +7,7 @@ import java.util.List;
 
 import eu.rodrigocamara.genericsoundboard.C;
 import eu.rodrigocamara.genericsoundboard.data.local.SoundProfileLocalDataSource;
-import eu.rodrigocamara.genericsoundboard.data.model.SoundProfile;
+import eu.rodrigocamara.genericsoundboard.data.model.Profile;
 
 /**
  * Created by Rodrigo Câmara on 30/01/2018.
@@ -33,7 +33,7 @@ public class SoundsRepository implements SoundDataSource {
         mLocalDataSource.getProfiles(sortType, new LoadProfileCallback() {
 
             @Override
-            public void onProfilesLoaded(List<SoundProfile> soundProfiles, int sortType) {
+            public void onProfilesLoaded(List<Profile> soundProfiles, int sortType) {
                 callback.onProfilesLoaded(soundProfiles, sortType);
             }
 

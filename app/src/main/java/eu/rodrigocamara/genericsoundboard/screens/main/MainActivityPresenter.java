@@ -14,7 +14,7 @@ import eu.rodrigocamara.genericsoundboard.C;
 import eu.rodrigocamara.genericsoundboard.R;
 import eu.rodrigocamara.genericsoundboard.data.SoundDataSource;
 import eu.rodrigocamara.genericsoundboard.data.SoundsRepository;
-import eu.rodrigocamara.genericsoundboard.data.model.SoundProfile;
+import eu.rodrigocamara.genericsoundboard.data.model.Profile;
 
 /**
  * Created by Rodrigo Câmara on 30/01/2018.
@@ -39,7 +39,7 @@ public class MainActivityPresenter implements MainActivityContract.Presenter {
 
     private SoundDataSource.LoadProfileCallback loadProfileCallback = new SoundDataSource.LoadProfileCallback() {
         @Override
-        public void onProfilesLoaded(List<SoundProfile> soundProfileList, int sortType) {
+        public void onProfilesLoaded(List<Profile> soundProfileList, int sortType) {
             mMainActivityView.showProfiles(soundProfileList);
             mMainActivityView.setLoadingIndicator(View.GONE);
         }

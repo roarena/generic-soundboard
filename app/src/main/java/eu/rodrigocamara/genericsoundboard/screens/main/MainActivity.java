@@ -18,7 +18,7 @@ import butterknife.ButterKnife;
 import eu.rodrigocamara.genericsoundboard.R;
 import eu.rodrigocamara.genericsoundboard.data.SoundsRepository;
 import eu.rodrigocamara.genericsoundboard.data.local.SoundProfileLocalDataSource;
-import eu.rodrigocamara.genericsoundboard.data.model.SoundProfile;
+import eu.rodrigocamara.genericsoundboard.data.model.Profile;
 
 public class MainActivity extends AppCompatActivity implements MainActivityContract.View {
     private MainActivityContract.Presenter mMainActivityPresenter;
@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
     }
 
     @Override
-    public void showProfiles(List<SoundProfile> profileList) {
+    public void showProfiles(List<Profile> profileList) {
         mMainActivityAdapter.replaceData(profileList);
     }
 

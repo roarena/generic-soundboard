@@ -3,6 +3,7 @@
     package="eu.rodrigocamara.genericsoundboard">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".GenericSoundboard"
         android:allowBackup="true"
@@ -20,6 +21,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".screens.profile.ProfileActivity"></activity>
     </application>
 
 </manifest>

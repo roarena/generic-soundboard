@@ -15,7 +15,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import eu.rodrigocamara.genericsoundboard.R;
-import eu.rodrigocamara.genericsoundboard.data.model.SoundProfile;
+import eu.rodrigocamara.genericsoundboard.data.model.Profile;
 
 /**
  * Created by Rodrigo Câmara on 30/01/2018.
@@ -24,7 +24,7 @@ import eu.rodrigocamara.genericsoundboard.data.model.SoundProfile;
 public class MainActivityAdapter extends RecyclerView.Adapter<MainActivityAdapter.MainActivityViewHolder> {
     private Context mContext;
     private ListItemClickListener mOnClickListener;
-    private List<SoundProfile> mDataSet;
+    private List<Profile> mDataSet;
 
     public class MainActivityViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.iv_sound_profile_image)
@@ -55,7 +55,7 @@ public class MainActivityAdapter extends RecyclerView.Adapter<MainActivityAdapte
         void onListItemClick(int clickedItemIndex);
     }
 
-    public void replaceData(List<SoundProfile> soundProfiles) {
+    public void replaceData(List<Profile> soundProfiles) {
         if (soundProfiles != null) {
             mDataSet = soundProfiles;
         }
