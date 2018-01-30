@@ -1,11 +1,17 @@
 package eu.rodrigocamara.genericsoundboard.screens.main;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
+import android.view.MenuItem;
+import android.view.View;
 
 import java.util.List;
 
 import eu.rodrigocamara.genericsoundboard.C;
+import eu.rodrigocamara.genericsoundboard.R;
 import eu.rodrigocamara.genericsoundboard.data.SoundDataSource;
 import eu.rodrigocamara.genericsoundboard.data.SoundsRepository;
 import eu.rodrigocamara.genericsoundboard.data.model.SoundProfile;
@@ -17,8 +23,9 @@ import eu.rodrigocamara.genericsoundboard.data.model.SoundProfile;
 public class MainActivityPresenter implements MainActivityContract.Presenter {
     private MainActivityContract.View mMainActivityView;
     private SoundsRepository mSoundsRepository;
+    private Context mContext;
 
-    public MainActivityPresenter(@NonNull SoundsRepository soundsRepository, @NonNull MainActivityContract.View moviesView) {
+    public MainActivityPresenter(Context context, @NonNull SoundsRepository soundsRepository, @NonNull MainActivityContract.View moviesView) {
 
         if (moviesView != null) {
             mMainActivityView = moviesView;
@@ -26,6 +33,7 @@ public class MainActivityPresenter implements MainActivityContract.Presenter {
         if (soundsRepository != null) {
             mSoundsRepository = soundsRepository;
         }
+        this.mContext = context;
         mMainActivityView.setPresenter(this);
     }
 
@@ -33,29 +41,19 @@ public class MainActivityPresenter implements MainActivityContract.Presenter {
         @Override
         public void onProfilesLoaded(List<SoundProfile> soundProfileList, int sortType) {
             mMainActivityView.showProfiles(soundProfileList);
-            mMainActivityView.setLoadingIndicator(false);
+            mMainActivityView.setLoadingIndicator(View.GONE);
         }
 
         @Override
         public void onDataNotAvailable() {
-            mMainActivityView.setLoadingIndicator(false);
+            mMainActivityView.setLoadingIndicator(View.GONE);
             Log.d(C.LOG_TAG, "No Profile Found");
         }
     };
 
     @Override
-    public void loadSounds(boolean shouldUpdate, int filter) {
+    public void loadProfiles(boolean shouldUpdate, int filter) {
         mSoundsRepository.getProfiles(0, loadProfileCallback);
-    }
-
-    @Override
-    public void setFilter(int filter) {
-
-    }
-
-    @Override
-    public int getFilter() {
-        return 0;
     }
 
     @Override
@@ -64,7 +62,20 @@ public class MainActivityPresenter implements MainActivityContract.Presenter {
     }
 
     @Override
+    public void onMenuClicked(MenuItem menuItem) {
+        if (menuItem.getTitle() == mContext.getResources().getString(R.string.menu_grid)) {
+            mMainActivityView.changeViewStyle(new GridLayoutManager(mContext, C.GRID_COLUMNS));
+            menuItem.setTitle(R.string.menu_horizontal);
+            menuItem.setIcon(R.drawable.view_horizontal);
+        } else {
+            mMainActivityView.changeViewStyle(new LinearLayoutManager(mContext));
+            menuItem.setTitle(R.string.menu_grid);
+            menuItem.setIcon(R.drawable.view_grid);
+        }
+    }
+
+    @Override
     public void start() {
-        loadSounds(false, 0);
+        loadProfiles(false, 0);
     }
 }

@@ -6,4 +6,6 @@ package eu.rodrigocamara.genericsoundboard;
 
 public class C {
     public static final String LOG_TAG = "Generic Sound Board";
+
+    public static final int GRID_COLUMNS = 2;
 }

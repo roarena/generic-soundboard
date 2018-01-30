@@ -1,5 +1,8 @@
 package eu.rodrigocamara.genericsoundboard.screens.main;
 
+import android.support.v7.widget.RecyclerView;
+import android.view.MenuItem;
+
 import java.util.List;
 
 import eu.rodrigocamara.genericsoundboard.BaseView;
@@ -15,17 +18,17 @@ public interface MainActivityContract {
 
         void showProfiles(List<SoundProfile> profileList);
 
-        void setLoadingIndicator(boolean status);
+        void setLoadingIndicator(int status);
+
+        void changeViewStyle(RecyclerView.LayoutManager layoutManager);
     }
 
     interface Presenter {
-        void loadSounds(boolean shouldUpdate, int filter);
-
-        void setFilter(int filter);
-
-        int getFilter();
+        void loadProfiles(boolean shouldUpdate, int filter);
 
         void onProfileClicked(int profileId);
+
+        void onMenuClicked(MenuItem menuItem);
 
         void start();
     }

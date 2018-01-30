@@ -56,7 +56,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/inner_default_margin"
-        android:tint="@android:color/white"
         app:layout_constraintBottom_toBottomOf="@+id/tv_sound_profile_sound_quantity"
         app:layout_constraintEnd_toStartOf="@+id/tv_sound_profile_sound_quantity"
         app:layout_constraintTop_toTopOf="@+id/tv_sound_profile_sound_quantity"

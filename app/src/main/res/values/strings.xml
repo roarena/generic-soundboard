@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Generic Soundboard</string>
+    <string name="menu_grid">View items in grid</string>
+    <string name="menu_horizontal">View items horizontally</string>
 </resources>
