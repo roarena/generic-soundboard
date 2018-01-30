@@ -1,23 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="?selectableItemBackground">
 
     <ImageView
         android:id="@+id/iv_sound_profile_image"
         android:layout_width="0dp"
-        android:layout_height="70dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="@dimen/default_margin"
-        android:layout_marginStart="@dimen/default_margin"
-        android:layout_marginTop="@dimen/default_margin"
+        android:layout_height="@dimen/main_card_image_size"
+        android:foreground="?android:attr/selectableItemBackground"
         android:scaleType="centerCrop"
-        app:layout_constraintBottom_toTopOf="@+id/tv_sound_profile_name"
-        app:layout_constraintEnd_toEndOf="@+id/tv_sound_profile_sound_quantity"
-        app:layout_constraintStart_toStartOf="@+id/tv_sound_profile_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="spread_inside"
         app:srcCompat="@mipmap/ic_launcher" />
 
     <TextView
@@ -25,25 +22,43 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/default_margin"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="@dimen/default_margin"
         android:layout_marginStart="@dimen/default_margin"
-        android:layout_marginTop="@dimen/default_margin"
-        android:text="TextView"
-        android:textSize="14sp"
+        android:shadowColor="@color/shadowColor"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="2"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/title_text_size"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_sound_profile_image"
         app:layout_constraintEnd_toStartOf="@+id/tv_sound_profile_sound_quantity"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_sound_profile_image" />
+        app:layout_constraintStart_toStartOf="@+id/iv_sound_profile_image" />
 
     <TextView
         android:id="@+id/tv_sound_profile_sound_quantity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/default_margin"
         android:layout_marginEnd="@dimen/default_margin"
-        android:text="99"
+        android:shadowColor="@color/shadowColor"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="2"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/title_text_size"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_sound_profile_name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tv_sound_profile_name" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/iv_sound_profile_image" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/inner_default_margin"
+        android:tint="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_sound_profile_sound_quantity"
+        app:layout_constraintEnd_toStartOf="@+id/tv_sound_profile_sound_quantity"
+        app:layout_constraintTop_toTopOf="@+id/tv_sound_profile_sound_quantity"
+        app:srcCompat="@drawable/music_note" />
 </android.support.constraint.ConstraintLayout>
