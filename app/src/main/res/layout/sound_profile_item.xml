@@ -22,7 +22,7 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/iv_sound_profile_image"
+                android:id="@+id/iv_profile_image"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/main_card_image_size"
                 android:foreground="?android:attr/selectableItemBackground"
@@ -47,9 +47,9 @@
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/title_text_size"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/iv_sound_profile_image"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_profile_image"
                 app:layout_constraintEnd_toStartOf="@+id/tv_sound_profile_sound_quantity"
-                app:layout_constraintStart_toStartOf="@+id/iv_sound_profile_image" />
+                app:layout_constraintStart_toStartOf="@+id/iv_profile_image" />
 
             <TextView
                 android:id="@+id/tv_sound_profile_sound_quantity"
@@ -65,7 +65,7 @@
                 android:textSize="@dimen/title_text_size"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/iv_sound_profile_image" />
+                app:layout_constraintEnd_toEndOf="@+id/iv_profile_image" />
 
             <ImageView
                 android:id="@+id/iv_sound_profile_icon"

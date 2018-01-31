@@ -1,5 +1,6 @@
 package eu.rodrigocamara.genericsoundboard.screens.main;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,14 +12,18 @@ import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
 import android.widget.ProgressBar;
 
+import org.parceler.Parcels;
+
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import eu.rodrigocamara.genericsoundboard.C;
 import eu.rodrigocamara.genericsoundboard.R;
 import eu.rodrigocamara.genericsoundboard.data.SoundsRepository;
 import eu.rodrigocamara.genericsoundboard.data.local.SoundProfileLocalDataSource;
 import eu.rodrigocamara.genericsoundboard.data.model.Profile;
+import eu.rodrigocamara.genericsoundboard.screens.profile.ProfileActivity;
 
 public class MainActivity extends AppCompatActivity implements MainActivityContract.View {
     private MainActivityContract.Presenter mMainActivityPresenter;
@@ -42,8 +47,8 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
 
         MainActivityAdapter.ListItemClickListener listItemClickListener = new MainActivityAdapter.ListItemClickListener() {
             @Override
-            public void onListItemClick(int clickedItemIndex) {
-                mMainActivityPresenter.onProfileClicked(clickedItemIndex);
+            public void onListItemClick(Profile profile) {
+                mMainActivityPresenter.onProfileClicked(profile);
             }
         };
 
@@ -100,6 +105,15 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
     public void changeViewStyle(RecyclerView.LayoutManager layoutManager) {
         mRecyclerView.setLayoutManager(layoutManager);
         runLayoutAnimation(mRecyclerView);
+    }
+
+    @Override
+    public void startNewActivity(Profile profile) {
+        Bundle bundle = new Bundle();
+        bundle.putParcelable(C.BUNDLE_PROFILE_TAG, Parcels.wrap(profile));
+        Intent newActivity = new Intent(this, ProfileActivity.class);
+        newActivity.putExtra(C.BUNDLE_PROFILE_TAG, Parcels.wrap(profile));
+        startActivity(newActivity);
     }
 
     private void runLayoutAnimation(final RecyclerView recyclerView) {

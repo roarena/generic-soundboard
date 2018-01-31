@@ -1,13 +1,19 @@
 package eu.rodrigocamara.genericsoundboard.data.model;
 
+import org.parceler.Parcel;
+
 /**
  * Created by rodri on 30/01/2018.
  */
-
+@Parcel
 public class Sound {
     private int id;
     private String name;
     private String soundURL;
+
+    public Sound() {
+
+    }
 
     public Sound(int id, String name, String soundURL) {
         this.id = id;

@@ -21,7 +21,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".screens.profile.ProfileActivity"></activity>
+        <activity
+            android:name=".screens.profile.ProfileActivity"
+            android:theme="@style/ProfileTheme"
+            android:parentActivityName=".screens.main.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".screens.main.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

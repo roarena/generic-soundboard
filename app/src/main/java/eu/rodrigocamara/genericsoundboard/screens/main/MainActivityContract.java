@@ -21,12 +21,14 @@ public interface MainActivityContract {
         void setLoadingIndicator(int status);
 
         void changeViewStyle(RecyclerView.LayoutManager layoutManager);
+
+        void startNewActivity(Profile profile);
     }
 
     interface Presenter {
         void loadProfiles(boolean shouldUpdate, int filter);
 
-        void onProfileClicked(int profileId);
+        void onProfileClicked(Profile profile);
 
         void onMenuClicked(MenuItem menuItem);
 

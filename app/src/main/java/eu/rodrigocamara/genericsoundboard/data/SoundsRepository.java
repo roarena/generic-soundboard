@@ -43,4 +43,9 @@ public class SoundsRepository implements SoundDataSource {
             }
         });
     }
+
+    @Override
+    public void getSounds(int sortType, @NonNull LoadSoundsCallback callback) {
+
+    }
 }

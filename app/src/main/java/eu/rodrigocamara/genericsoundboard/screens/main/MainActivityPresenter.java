@@ -1,12 +1,16 @@
 package eu.rodrigocamara.genericsoundboard.screens.main;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+
+import org.parceler.Parcels;
 
 import java.util.List;
 
@@ -57,8 +61,8 @@ public class MainActivityPresenter implements MainActivityContract.Presenter {
     }
 
     @Override
-    public void onProfileClicked(int profileId) {
-
+    public void onProfileClicked(Profile profile) {
+        mMainActivityView.startNewActivity(profile);
     }
 
     @Override
