@@ -20,8 +20,10 @@ import eu.rodrigocamara.genericsoundboard.data.model.Profile;
 public class ProfileActivity extends AppCompatActivity {
     @BindView(R.id.iv_profile_image)
     ImageView mIvProfilePicture;
-    //@BindView(R.id.tv_profile_name)
-    //TextView mTvProfileName;
+    @BindView(R.id.iv_backdrop_image)
+    ImageView mIvBackdropImage;
+    @BindView(R.id.tv_profile_name)
+    TextView mTvProfileName;
 
     @BindView(R.id.tb_profile)
     Toolbar mTbProfile;
@@ -35,8 +37,10 @@ public class ProfileActivity extends AppCompatActivity {
         Profile currentProfile = Parcels.unwrap(getIntent().getParcelableExtra(C.BUNDLE_PROFILE_TAG));
 
         Picasso.with(this).load(currentProfile.getImgURL()).into(mIvProfilePicture);
-       // mTvProfileName.setText();
-        mTbProfile.setTitle(currentProfile.getName());
+        Picasso.with(this).load(currentProfile.getBackdropURL()).into(mIvBackdropImage);
+
+        mTvProfileName.setText(currentProfile.getName());
+        mTbProfile.setTitle("");
         setSupportActionBar(mTbProfile);
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
