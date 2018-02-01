@@ -26,5 +26,5 @@ public interface SoundDataSource {
 
     void getProfiles(int sortType, @NonNull LoadProfileCallback callback);
 
-    void getSounds(int sortType, @NonNull LoadSoundsCallback callback);
+    void getSounds(int sortType, @NonNull LoadSoundsCallback callback, int position);
 }

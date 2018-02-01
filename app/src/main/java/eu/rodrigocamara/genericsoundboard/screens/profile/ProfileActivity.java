@@ -1,26 +1,32 @@
 package eu.rodrigocamara.genericsoundboard.screens.profile;
 
-import android.media.Image;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import eu.rodrigocamara.genericsoundboard.C;
 import eu.rodrigocamara.genericsoundboard.R;
+import eu.rodrigocamara.genericsoundboard.data.SoundsRepository;
+import eu.rodrigocamara.genericsoundboard.data.local.SoundProfileLocalDataSource;
 import eu.rodrigocamara.genericsoundboard.data.model.Profile;
+import eu.rodrigocamara.genericsoundboard.data.model.Sound;
 
-public class ProfileActivity extends AppCompatActivity {
+public class ProfileActivity extends AppCompatActivity implements ProfileActivityContract.View {
     private ProfileActivityContract.Presenter mProfileActivityPresenter;
+    private ProfileAdapter mProfileAdapter;
 
     @BindView(R.id.iv_profile_image)
     ImageView mIvProfilePicture;
@@ -36,28 +42,67 @@ public class ProfileActivity extends AppCompatActivity {
     @BindView(R.id.tb_profile)
     Toolbar mTbProfile;
 
+    @BindView(R.id.rv_sounds)
+    RecyclerView mRvSounds;
+    Profile mCurrentProfile;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         ButterKnife.bind(this);
-        mProfileActivityPresenter = new ProfileActivityPresenter();
 
-        final Profile currentProfile = Parcels.unwrap(getIntent().getParcelableExtra(C.BUNDLE_PROFILE_TAG));
+        mCurrentProfile = Parcels.unwrap(getIntent().getParcelableExtra(C.BUNDLE_PROFILE_TAG));
 
-        Picasso.with(this).load(currentProfile.getImgURL()).into(mIvProfilePicture);
-        Picasso.with(this).load(currentProfile.getBackdropURL()).into(mIvBackdropImage);
+        Picasso.with(this).load(mCurrentProfile.getImgURL()).into(mIvProfilePicture);
+        Picasso.with(this).load(mCurrentProfile.getBackdropURL()).into(mIvBackdropImage);
+        mTvProfileName.setText(mCurrentProfile.getFullName());
+        mTvProfileDescription.setText(mCurrentProfile.getDescription());
+        mTbProfile.setTitle("");
+        setSupportActionBar(mTbProfile);
 
         mIvTwitterSocial.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mProfileActivityPresenter.onSocialClicked(R.id.iv_profile_social_twitter, currentProfile.getTwitter(), getApplicationContext());
+                mProfileActivityPresenter.onSocialClicked(R.id.iv_profile_social_twitter, mCurrentProfile.getTwitter(), getApplicationContext());
             }
         });
 
-        mTvProfileName.setText(currentProfile.getFullName());
-        mTvProfileDescription.setText(currentProfile.getDescription());
-        mTbProfile.setTitle("");
-        setSupportActionBar(mTbProfile);
+        ProfileAdapter.ListItemClickListener listItemClickListener = new ProfileAdapter.ListItemClickListener() {
+            @Override
+            public void onListItemClick(Sound sound) {
+                mProfileActivityPresenter.onSoundClicked(sound);
+            }
+        };
+        mProfileActivityPresenter = new ProfileActivityPresenter(this, SoundsRepository.getInstance(SoundProfileLocalDataSource.getInstance()), this);
+
+        mProfileAdapter = new ProfileAdapter(this, listItemClickListener);
+        mRvSounds.setLayoutManager(new GridLayoutManager(this, 3));
+        mRvSounds.setAdapter(mProfileAdapter);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mProfileActivityPresenter.start(mCurrentProfile.getId());
+    }
+
+    @Override
+    public void setPresenter(ProfileActivityContract.Presenter presenter) {
+        if (presenter == null) {
+            throw new NullPointerException("Presenter is null");
+        }
+        mProfileActivityPresenter = presenter;
+    }
+
+
+    @Override
+    public void showSounds(List<Sound> soundList) {
+        mProfileAdapter.replaceData(soundList);
+    }
+
+    @Override
+    public void setLoadingIndicator(int status) {
+
     }
 }

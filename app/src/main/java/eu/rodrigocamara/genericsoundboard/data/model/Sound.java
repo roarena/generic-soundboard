@@ -10,15 +10,17 @@ public class Sound {
     private int id;
     private String name;
     private String soundURL;
+    private String imgURL;
 
     public Sound() {
 
     }
 
-    public Sound(int id, String name, String soundURL) {
+    public Sound(int id, String name, String soundURL, String imgURL) {
         this.id = id;
         this.name = name;
         this.soundURL = soundURL;
+        this.imgURL = imgURL;
     }
 
     public int getId() {
@@ -43,5 +45,13 @@ public class Sound {
 
     public void setSoundURL(String soundURL) {
         this.soundURL = soundURL;
+    }
+
+    public String getImgURL() {
+        return imgURL;
+    }
+
+    public void setImgURL(String imgURL) {
+        this.imgURL = imgURL;
     }
 }

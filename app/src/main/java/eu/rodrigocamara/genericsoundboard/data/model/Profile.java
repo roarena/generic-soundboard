@@ -2,6 +2,8 @@ package eu.rodrigocamara.genericsoundboard.data.model;
 
 import org.parceler.Parcel;
 
+import java.util.List;
+
 /**
  * Created by Rodrigo Câmara on 30/01/2018.
  */
@@ -15,12 +17,13 @@ public class Profile {
     String imgURL;
     String backdropURL;
     int numberOfSounds;
+    List<Sound> soundList;
 
     public Profile() {
 
     }
 
-    public Profile(int id, String name, String fullName, String description, String twitter, String imgURL, String backdropURL, int numberOfSounds) {
+    public Profile(int id, String name, String twitter, String fullName, String description, String imgURL, String backdropURL, int numberOfSounds, List<Sound> soundList) {
         this.id = id;
         this.name = name;
         this.twitter = twitter;
@@ -29,6 +32,7 @@ public class Profile {
         this.imgURL = imgURL;
         this.backdropURL = backdropURL;
         this.numberOfSounds = numberOfSounds;
+        this.soundList = soundList;
     }
 
     public int getId() {
@@ -95,5 +99,11 @@ public class Profile {
         this.description = description;
     }
 
+    public List<Sound> getSoundList() {
+        return soundList;
+    }
 
+    public void setSoundList(List<Sound> soundList) {
+        this.soundList = soundList;
+    }
 }

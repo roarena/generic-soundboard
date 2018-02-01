@@ -8,6 +8,7 @@ import java.util.List;
 import eu.rodrigocamara.genericsoundboard.C;
 import eu.rodrigocamara.genericsoundboard.data.local.SoundProfileLocalDataSource;
 import eu.rodrigocamara.genericsoundboard.data.model.Profile;
+import eu.rodrigocamara.genericsoundboard.data.model.Sound;
 
 /**
  * Created by Rodrigo Câmara on 30/01/2018.
@@ -45,7 +46,17 @@ public class SoundsRepository implements SoundDataSource {
     }
 
     @Override
-    public void getSounds(int sortType, @NonNull LoadSoundsCallback callback) {
+    public void getSounds(int sortType, @NonNull final LoadSoundsCallback callback, int position) {
+        mLocalDataSource.getSounds(sortType, new LoadSoundsCallback() {
+            @Override
+            public void onSoundsLoaded(List<Sound> soundList, int sortType) {
+                callback.onSoundsLoaded(soundList, sortType);
+            }
 
+            @Override
+            public void onDataNotAvailable() {
+
+            }
+        }, position);
     }
 }

@@ -8,6 +8,7 @@ import java.util.List;
 
 import eu.rodrigocamara.genericsoundboard.BaseView;
 import eu.rodrigocamara.genericsoundboard.data.model.Profile;
+import eu.rodrigocamara.genericsoundboard.data.model.Sound;
 
 /**
  * Created by Rodrigo Câmara on 30/01/2018.
@@ -15,24 +16,18 @@ import eu.rodrigocamara.genericsoundboard.data.model.Profile;
 
 public interface ProfileActivityContract {
     interface View extends BaseView<Presenter> {
-        void setViewTitle(String title);
-
-        void showSounds(List<Profile> profileList);
+        void showSounds(List<Sound> profileList);
 
         void setLoadingIndicator(int status);
-
-        void changeViewStyle(RecyclerView.LayoutManager layoutManager);
     }
 
     interface Presenter {
-        void loadSounds(boolean shouldUpdate, int filter);
+        void loadSounds(boolean shouldUpdate, int filter,int position);
 
-        void onSoundClicked(int profileId);
+        void onSoundClicked(Sound sound);
 
         void onSocialClicked(int socialButton, String socialUrl,Context context);
 
-        void onMenuClicked(MenuItem menuItem);
-
-        void start();
+        void start(int position);
     }
 }
