@@ -23,8 +23,9 @@
         </activity>
         <activity
             android:name=".screens.profile.ProfileActivity"
-            android:theme="@style/ProfileTheme"
-            android:parentActivityName=".screens.main.MainActivity">
+            android:parentActivityName=".screens.main.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ProfileTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".screens.main.MainActivity" />
