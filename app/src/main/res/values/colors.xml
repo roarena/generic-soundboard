@@ -6,4 +6,5 @@
 
     <color name="backgroundColor">#F5F5F5</color>
     <color name="shadowColor">#7F000000</color>
+    <color name="twitter_logo">#81D4FA</color>
 </resources>

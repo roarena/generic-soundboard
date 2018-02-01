@@ -18,7 +18,7 @@
     <android.support.design.widget.AppBarLayout
         android:id="@+id/details_appbar"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="@dimen/toolbar_profile_size"
         android:fitsSystemWindows="true">
 
         <android.support.design.widget.CollapsingToolbarLayout
@@ -27,12 +27,34 @@
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
             app:layout_collapseMode="pin"
+            app:titleEnabled="false"
             app:toolbarId="@id/tb_profile">
 
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fitsSystemWindows="true">
+
+                <TextView
+                    android:id="@+id/tv_profile_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/default_margin"
+                    android:layout_marginEnd="@dimen/default_margin"
+                    android:layout_marginStart="@dimen/default_margin"
+                    android:layout_marginTop="@dimen/inner_default_margin"
+                    android:elevation="2dp"
+                    android:shadowColor="@color/shadowColor"
+                    android:shadowDx="1"
+                    android:shadowDy="1"
+                    android:shadowRadius="5"
+                    android:text="TextView"
+                    android:textAlignment="center"
+                    android:textSize="@dimen/subtitle_text_size"
+                    app:layout_constraintBottom_toBottomOf="@+id/iv_backdrop_image"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_profile_name" />
 
                 <ImageView
                     android:id="@+id/iv_backdrop_image"
@@ -44,8 +66,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/renan_backdrop" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/iv_profile_image"
@@ -65,17 +86,29 @@
                     android:id="@+id/tv_profile_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="@dimen/default_margin"
                     android:elevation="2dp"
                     android:shadowColor="@color/shadowColor"
                     android:shadowDx="1"
                     android:shadowDy="1"
                     android:shadowRadius="5"
                     android:text="TextView"
+                    android:textAlignment="center"
                     android:textSize="@dimen/title_text_size"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/iv_profile_image" />
+
+                <ImageView
+                    android:id="@+id/iv_profile_social_twitter"
+                    android:layout_width="@dimen/toolbar_social_image_size"
+                    android:layout_height="@dimen/toolbar_social_image_size"
+                    android:layout_marginBottom="@dimen/default_margin"
+                    android:layout_marginEnd="@dimen/default_margin"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:srcCompat="@drawable/twitter_box" />
 
             </android.support.constraint.ConstraintLayout>
 

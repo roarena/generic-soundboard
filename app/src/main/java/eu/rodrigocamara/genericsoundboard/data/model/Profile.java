@@ -9,6 +9,9 @@ import org.parceler.Parcel;
 public class Profile {
     int id;
     String name;
+    String twitter;
+    String fullName;
+    String description;
     String imgURL;
     String backdropURL;
     int numberOfSounds;
@@ -17,12 +20,15 @@ public class Profile {
 
     }
 
-    public Profile(int id, String name, String imgURL, int numberOfSounds, String backdropURL) {
+    public Profile(int id, String name, String fullName, String description, String twitter, String imgURL, String backdropURL, int numberOfSounds) {
         this.id = id;
         this.name = name;
+        this.twitter = twitter;
+        this.fullName = fullName;
+        this.description = description;
         this.imgURL = imgURL;
-        this.numberOfSounds = numberOfSounds;
         this.backdropURL = backdropURL;
+        this.numberOfSounds = numberOfSounds;
     }
 
     public int getId() {
@@ -64,4 +70,30 @@ public class Profile {
     public void setBackdropURL(String backdropURL) {
         this.backdropURL = backdropURL;
     }
+
+    public String getTwitter() {
+        return twitter;
+    }
+
+    public void setTwitter(String twitter) {
+        this.twitter = twitter;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+
 }

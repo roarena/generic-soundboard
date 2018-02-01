@@ -1,5 +1,6 @@
 package eu.rodrigocamara.genericsoundboard.screens.profile;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 
@@ -27,6 +28,8 @@ public interface ProfileActivityContract {
         void loadSounds(boolean shouldUpdate, int filter);
 
         void onSoundClicked(int profileId);
+
+        void onSocialClicked(int socialButton, String socialUrl,Context context);
 
         void onMenuClicked(MenuItem menuItem);
 
