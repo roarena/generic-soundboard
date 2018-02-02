@@ -105,4 +105,8 @@ public class MediaPlayerHelper {
         }
         return Environment.getExternalStorageDirectory() + "/Android/data/" + context.getPackageName() + "/" + filename;
     }
+
+    public MediaPlayer getMediaPlayer() {
+        return mMediaPlayer;
+    }
 }

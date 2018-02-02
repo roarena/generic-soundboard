@@ -23,6 +23,7 @@ import eu.rodrigocamara.genericsoundboard.data.SoundsRepository;
 import eu.rodrigocamara.genericsoundboard.data.local.SoundProfileLocalDataSource;
 import eu.rodrigocamara.genericsoundboard.data.model.Profile;
 import eu.rodrigocamara.genericsoundboard.data.model.Sound;
+import eu.rodrigocamara.genericsoundboard.utils.MediaPlayerHelper;
 
 public class ProfileActivity extends AppCompatActivity implements ProfileActivityContract.View {
     private ProfileActivityContract.Presenter mProfileActivityPresenter;
@@ -64,7 +65,8 @@ public class ProfileActivity extends AppCompatActivity implements ProfileActivit
         mIvTwitterSocial.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mProfileActivityPresenter.onSocialClicked(R.id.iv_profile_social_twitter, mCurrentProfile.getTwitter(), getApplicationContext());
+                mProfileActivityPresenter.onSocialClicked(R.id.iv_profile_social_twitter,
+                        mCurrentProfile.getTwitter(), getApplicationContext());
             }
         });
 
@@ -82,9 +84,10 @@ public class ProfileActivity extends AppCompatActivity implements ProfileActivit
             }
         };
 
-        mProfileActivityPresenter = new ProfileActivityPresenter(this, SoundsRepository.getInstance(SoundProfileLocalDataSource.getInstance()), this);
+        mProfileActivityPresenter = new ProfileActivityPresenter(this, SoundsRepository.
+                getInstance(SoundProfileLocalDataSource.getInstance()), this);
 
-        mProfileAdapter = new ProfileAdapter(this, listItemClickListener,listItemLongClickListener);
+        mProfileAdapter = new ProfileAdapter(this, listItemClickListener, listItemLongClickListener);
         mRvSounds.setLayoutManager(new GridLayoutManager(this, 3));
         mRvSounds.setAdapter(mProfileAdapter);
     }
@@ -111,6 +114,13 @@ public class ProfileActivity extends AppCompatActivity implements ProfileActivit
 
     @Override
     public void setLoadingIndicator(int status) {
+    }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (MediaPlayerHelper.getInstance().getMediaPlayer().isPlaying()) {
+            MediaPlayerHelper.getInstance().stopSound();
+        }
     }
 }

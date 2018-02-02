@@ -15,7 +15,7 @@ import eu.rodrigocamara.genericsoundboard.data.model.Sound;
  */
 
 public class SoundProfileLocalDataSource implements SoundDataSource {
-    private static SoundProfileLocalDataSource instance;
+    private static SoundProfileLocalDataSource instance = null;
     List<Profile> soundProfileList;
 
     private SoundProfileLocalDataSource() {
@@ -88,58 +88,103 @@ public class SoundProfileLocalDataSource implements SoundDataSource {
             callback.onSoundsLoaded(soundProfileList.get(position).getSoundList(), sortType);
         }
     }
+
     private List<Sound> createMaurilioList() {
         List<Sound> soundList = new ArrayList<>();
-        Sound sound = new Sound(0, "Boa noite amantes do cinema...", R.raw.maurilio_boa_noite, "https://media.tenor.com/images/78f66e06e01627aa1720e24e2b52f16c/tenor.png");
+        Sound sound = new Sound(0,
+                "Boa noite amantes do cinema...",
+                R.raw.maurilio_boa_noite,
+                "https://media.tenor.com/images/78f66e06e01627aa1720e24e2b52f16c/tenor.png");
         soundList.add(sound);
-        sound = new Sound(1, "A justiça é muito injustça", R.raw.maurilio_justica, "https://media.tenor.com/images/78f66e06e01627aa1720e24e2b52f16c/tenor.png");
+        sound = new Sound(1,
+                "A justiça é muito injustça",
+                R.raw.maurilio_justica,
+                "https://media.tenor.com/images/78f66e06e01627aa1720e24e2b52f16c/tenor.png");
         soundList.add(sound);
         return soundList;
     }
 
     private List<Sound> createJulinhoList() {
         List<Sound> soundList = new ArrayList<>();
-        Sound sound = new Sound(0, "Boa noite companheiros motoristas...", R.raw.julinho_seriedade, "https://pbs.twimg.com/profile_images/800892278470537216/eejoSRRh.jpg");
+        Sound sound = new Sound(0,
+                "Boa noite companheiros motoristas...", R.raw.julinho_seriedade,
+                "https://pbs.twimg.com/profile_images/800892278470537216/eejoSRRh.jpg");
         soundList.add(sound);
-        sound = new Sound(1, "Me da aquela moralzinha?", R.raw.julinho_moralzinha, "https://pbs.twimg.com/profile_images/800892278470537216/eejoSRRh.jpg");
+        sound = new Sound(1,
+                "Me da aquela moralzinha?", R.raw.julinho_moralzinha,
+                "https://pbs.twimg.com/profile_images/800892278470537216/eejoSRRh.jpg");
         soundList.add(sound);
-        sound = new Sound(2, "Vou ser obrigado a concordar com o...", R.raw.julinho_concordar, "https://pbs.twimg.com/profile_images/800892278470537216/eejoSRRh.jpg");
+        sound = new Sound(2,
+                "Vou ser obrigado a concordar com o...", R.raw.julinho_concordar,
+                "https://pbs.twimg.com/profile_images/800892278470537216/eejoSRRh.jpg");
         soundList.add(sound);
-        sound = new Sound(3, "Todo mundo sabe que cinema é...", R.raw.julinho_explosao, "https://pbs.twimg.com/profile_images/800892278470537216/eejoSRRh.jpg");
+        sound = new Sound(3,
+                "Todo mundo sabe que cinema é...", R.raw.julinho_explosao,
+                "https://pbs.twimg.com/profile_images/800892278470537216/eejoSRRh.jpg");
         soundList.add(sound);
-        sound = new Sound(4, "Falo com tranquilidade", R.raw.julinho_tranquilidade, "https://pbs.twimg.com/profile_images/800892278470537216/eejoSRRh.jpg");
+        sound = new Sound(4,
+                "Falo com tranquilidade", R.raw.julinho_tranquilidade,
+                "https://pbs.twimg.com/profile_images/800892278470537216/eejoSRRh.jpg");
         soundList.add(sound);
         return soundList;
     }
 
     private List<Sound> createRogerinhoList() {
         List<Sound> soundList = new ArrayList<>();
-        Sound sound = new Sound(0, "Achou errado otário", R.raw.rogerinho_acho_errado, "https://pbs.twimg.com/profile_images/800701598582407168/3dKHpeEJ.jpg");
+        Sound sound = new Sound(0,
+                "Achou errado otário",
+                R.raw.rogerinho_acho_errado,
+                "https://pbs.twimg.com/profile_images/800701598582407168/3dKHpeEJ.jpg");
         soundList.add(sound);
-        sound = new Sound(1, "Encontrou porra!", R.raw.rogerinho_encontrou, "https://pbs.twimg.com/profile_images/800701598582407168/3dKHpeEJ.jpg");
+        sound = new Sound(1,
+                "Encontrou porra!", R.raw.rogerinho_encontrou,
+                "https://pbs.twimg.com/profile_images/800701598582407168/3dKHpeEJ.jpg");
         soundList.add(sound);
-        sound = new Sound(2, "Otário!", R.raw.rogerinho_otario, "https://pbs.twimg.com/profile_images/800701598582407168/3dKHpeEJ.jpg");
+        sound = new Sound(2,
+                "Otário!", R.raw.rogerinho_otario,
+                "https://pbs.twimg.com/profile_images/800701598582407168/3dKHpeEJ.jpg");
         soundList.add(sound);
-        sound = new Sound(3, "Tem que acabar a justiça!", R.raw.rogerinho_acabar_justica, "https://pbs.twimg.com/profile_images/800701598582407168/3dKHpeEJ.jpg");
+        sound = new Sound(3,
+                "Tem que acabar a justiça!",
+                R.raw.rogerinho_acabar_justica, "https://pbs.twimg.com/profile_images/800701598582407168/3dKHpeEJ.jpg");
         soundList.add(sound);
-        sound = new Sound(4, "Você é um guerreiro!", R.raw.rogerinho_guerreiro_renan, "https://pbs.twimg.com/profile_images/800701598582407168/3dKHpeEJ.jpg");
+        sound = new Sound(4,
+                "Você é um guerreiro!",
+                R.raw.rogerinho_guerreiro_renan, "https://pbs.twimg.com/profile_images/800701598582407168/3dKHpeEJ.jpg");
         soundList.add(sound);
-        sound = new Sound(5, "Hulk quiser agredir uma idosa...!", R.raw.rogerinho_hulk_idosa, "https://pbs.twimg.com/profile_images/800701598582407168/3dKHpeEJ.jpg");
+        sound = new Sound(5,
+                "Hulk quiser agredir uma idosa...!",
+                R.raw.rogerinho_hulk_idosa, "https://pbs.twimg.com/profile_images/800701598582407168/3dKHpeEJ.jpg");
         soundList.add(sound);
         return soundList;
     }
 
     private List<Sound> createRenanList() {
         List<Sound> soundList = new ArrayList<>();
-        Sound sound = new Sound(0, "Uma criança linda, agora um adulto esquisito", R.raw.renan_adulto_esquisito, "https://pbs.twimg.com/media/DTQy9Z4XcAA6yO9.jpg");
+        Sound sound = new Sound(0,
+                "Uma criança linda, agora um adulto esquisito",
+                R.raw.renan_adulto_esquisito,
+                "https://pbs.twimg.com/media/DTQy9Z4XcAA6yO9.jpg");
         soundList.add(sound);
-        sound = new Sound(1, "Eu vejo o filme pra não ter que ler o livro!", R.raw.renan_filme_livro, "https://pbs.twimg.com/media/DTQy9Z4XcAA6yO9.jpg");
+        sound = new Sound(1,
+                "Eu vejo o filme pra não ter que ler o livro!",
+                R.raw.renan_filme_livro,
+                "https://pbs.twimg.com/media/DTQy9Z4XcAA6yO9.jpg");
         soundList.add(sound);
-        sound = new Sound(2, "Ele é meu guerrerinho!", R.raw.renan_guerrerinho, "https://pbs.twimg.com/media/DTQy9Z4XcAA6yO9.jpg");
+        sound = new Sound(2,
+                "Ele é meu guerrerinho!",
+                R.raw.renan_guerrerinho,
+                "https://pbs.twimg.com/media/DTQy9Z4XcAA6yO9.jpg");
         soundList.add(sound);
-        sound = new Sound(3, "Ele tem talento pra isso!", R.raw.renan_tem_talento, "https://pbs.twimg.com/media/DTQy9Z4XcAA6yO9.jpg");
+        sound = new Sound(3,
+                "Ele tem talento pra isso!",
+                R.raw.renan_tem_talento,
+                "https://pbs.twimg.com/media/DTQy9Z4XcAA6yO9.jpg");
         soundList.add(sound);
-        sound = new Sound(4, "Sósia nem tão parecido com ele mesmo", R.raw.renan_sosia, "https://pbs.twimg.com/media/DTQy9Z4XcAA6yO9.jpg");
+        sound = new Sound(4,
+                "Sósia nem tão parecido com ele mesmo",
+                R.raw.renan_sosia,
+                "https://pbs.twimg.com/media/DTQy9Z4XcAA6yO9.jpg");
         soundList.add(sound);
         return soundList;
     }
