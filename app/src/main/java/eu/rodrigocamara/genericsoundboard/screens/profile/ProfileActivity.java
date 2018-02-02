@@ -74,9 +74,17 @@ public class ProfileActivity extends AppCompatActivity implements ProfileActivit
                 mProfileActivityPresenter.onSoundClicked(sound);
             }
         };
+
+        ProfileAdapter.ListItemLongClickListener listItemLongClickListener = new ProfileAdapter.ListItemLongClickListener() {
+            @Override
+            public void onLongListItemClick(Sound sound) {
+                mProfileActivityPresenter.onSoundLongClicked(sound);
+            }
+        };
+
         mProfileActivityPresenter = new ProfileActivityPresenter(this, SoundsRepository.getInstance(SoundProfileLocalDataSource.getInstance()), this);
 
-        mProfileAdapter = new ProfileAdapter(this, listItemClickListener);
+        mProfileAdapter = new ProfileAdapter(this, listItemClickListener,listItemLongClickListener);
         mRvSounds.setLayoutManager(new GridLayoutManager(this, 3));
         mRvSounds.setAdapter(mProfileAdapter);
     }

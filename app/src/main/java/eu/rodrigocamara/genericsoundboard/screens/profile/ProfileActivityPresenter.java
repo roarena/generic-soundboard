@@ -2,6 +2,7 @@ package eu.rodrigocamara.genericsoundboard.screens.profile;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.util.Log;
@@ -15,6 +16,7 @@ import eu.rodrigocamara.genericsoundboard.R;
 import eu.rodrigocamara.genericsoundboard.data.SoundDataSource;
 import eu.rodrigocamara.genericsoundboard.data.SoundsRepository;
 import eu.rodrigocamara.genericsoundboard.data.model.Sound;
+import eu.rodrigocamara.genericsoundboard.utils.MediaPlayerHelper;
 
 /**
  * Created by rodri on 30/01/2018.
@@ -59,6 +61,12 @@ public class ProfileActivityPresenter implements ProfileActivityContract.Present
     @Override
     public void onSoundClicked(Sound sound) {
         Log.i(C.LOG_TAG, sound.getName());
+        MediaPlayerHelper.getInstance().playSound(mContext, sound.getSoundURL());
+    }
+
+    @Override
+    public void onSoundLongClicked(Sound sound) {
+        MediaPlayerHelper.getInstance().shareAudio(mContext, sound.getSoundURL());
     }
 
     @Override

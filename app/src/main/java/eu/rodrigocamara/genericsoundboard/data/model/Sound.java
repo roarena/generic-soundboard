@@ -9,14 +9,14 @@ import org.parceler.Parcel;
 public class Sound {
     private int id;
     private String name;
-    private String soundURL;
+    private int soundURL;
     private String imgURL;
 
     public Sound() {
 
     }
 
-    public Sound(int id, String name, String soundURL, String imgURL) {
+    public Sound(int id, String name, int soundURL, String imgURL) {
         this.id = id;
         this.name = name;
         this.soundURL = soundURL;
@@ -39,11 +39,11 @@ public class Sound {
         this.name = name;
     }
 
-    public String getSoundURL() {
+    public int getSoundURL() {
         return soundURL;
     }
 
-    public void setSoundURL(String soundURL) {
+    public void setSoundURL(int soundURL) {
         this.soundURL = soundURL;
     }
 

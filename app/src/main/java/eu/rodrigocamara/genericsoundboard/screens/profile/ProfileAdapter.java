@@ -26,6 +26,7 @@ import eu.rodrigocamara.genericsoundboard.data.model.Sound;
 public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ProfileAdapterViewHolder> {
     private Context mContext;
     private ProfileAdapter.ListItemClickListener mOnClickListener;
+    private ProfileAdapter.ListItemLongClickListener mOnLongClickListener;
     private List<Sound> mDataSet;
 
     public class ProfileAdapterViewHolder extends RecyclerView.ViewHolder {
@@ -46,19 +47,25 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ProfileA
             itemView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View view) {
-                    return false;
+                    mOnLongClickListener.onLongListItemClick(mDataSet.get(getAdapterPosition()));
+                    return true;
                 }
             });
         }
     }
 
-    public ProfileAdapter(Context context, ProfileAdapter.ListItemClickListener clickListener) {
+    public ProfileAdapter(Context context, ProfileAdapter.ListItemClickListener clickListener, ProfileAdapter.ListItemLongClickListener longClickListener) {
         mContext = context;
         mOnClickListener = clickListener;
+        mOnLongClickListener = longClickListener;
     }
 
     public interface ListItemClickListener {
         void onListItemClick(Sound sound);
+    }
+
+    public interface ListItemLongClickListener {
+        void onLongListItemClick(Sound sound);
     }
 
     public void replaceData(List<Sound> sounds) {

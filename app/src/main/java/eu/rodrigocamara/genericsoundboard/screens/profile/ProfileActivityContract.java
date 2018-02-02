@@ -22,11 +22,13 @@ public interface ProfileActivityContract {
     }
 
     interface Presenter {
-        void loadSounds(boolean shouldUpdate, int filter,int position);
+        void loadSounds(boolean shouldUpdate, int filter, int position);
 
         void onSoundClicked(Sound sound);
 
-        void onSocialClicked(int socialButton, String socialUrl,Context context);
+        void onSoundLongClicked(Sound sound);
+
+        void onSocialClicked(int socialButton, String socialUrl, Context context);
 
         void start(int position);
     }
